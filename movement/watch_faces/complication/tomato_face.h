@@ -28,22 +28,21 @@
 #include "movement.h"
 
 typedef enum {
-    tomato_ready,
-    tomato_run,
-    // to_pause, // TODO implement pausing
+  tomato_ready,
+  tomato_run,
 } tomato_mode;
 
 typedef enum {
-    tomato_break,
-    tomato_focus,
+  tomato_break,
+  tomato_focus,
 } tomato_kind;
 
 typedef struct {
-    uint32_t target_ts;
-    uint32_t now_ts;
-    tomato_mode mode;
-    tomato_kind kind;
-    uint8_t done_count;
+  uint16_t elapsed;
+  uint16_t target;
+  tomato_mode mode;
+  tomato_kind kind;
+  uint8_t done_count;
 } tomato_state_t;
 
 void tomato_face_setup(movement_settings_t *settings, uint8_t watch_face_index, void ** context_ptr);
@@ -51,13 +50,13 @@ void tomato_face_activate(movement_settings_t *settings, void *context);
 bool tomato_face_loop(movement_event_t event, movement_settings_t *settings, void *context);
 void tomato_face_resign(movement_settings_t *settings, void *context);
 
-#define tomato_face ((const watch_face_t){ \
-    tomato_face_setup, \
-    tomato_face_activate, \
-    tomato_face_loop, \
-    tomato_face_resign, \
-    NULL, \
-})
+#define tomato_face ((const watch_face_t){		\
+	  tomato_face_setup,						\
+	  tomato_face_activate,						\
+	  tomato_face_loop,							\
+	  tomato_face_resign,						\
+	  NULL,										\
+	})
 
 #endif // TOMATO_FACE_H_
 
