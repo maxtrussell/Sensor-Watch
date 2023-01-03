@@ -30,11 +30,12 @@
 const watch_face_t watch_faces[] = {
     simple_clock_face,
     world_clock_face,
+    countdown_face,
     sunrise_sunset_face,
-    moon_phase_face,
-    stopwatch_face,
+    tomato_face,
     preferences_face,
     set_time_face,
+    /* dice_face, */
 };
 
 #define MOVEMENT_NUM_FACES (sizeof(watch_faces) / sizeof(watch_face_t))
